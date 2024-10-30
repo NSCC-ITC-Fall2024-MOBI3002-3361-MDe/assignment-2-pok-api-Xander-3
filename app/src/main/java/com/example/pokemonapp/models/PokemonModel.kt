@@ -29,24 +29,5 @@ data class PokemonSpritesModel(
     @SerializedName("front_default") val imageURL: String
 ): Parcelable
 
-//@Parcelize
-//data class Pokemon(
-//    val name: String,
-//    val weight: Int,
-//    val height: Int,
-//    val types: List<Type>,
-//    val sprite: Sprite
-//): Parcelable
-//
-//@Parcelize
-//data class Type(
-//    val name: String
-//):Parcelable
-//
-//@Parcelize
-//data class Sprite(
-//    val imageURL: String
-//): Parcelable
-
 //TODO
 //I hate nested data

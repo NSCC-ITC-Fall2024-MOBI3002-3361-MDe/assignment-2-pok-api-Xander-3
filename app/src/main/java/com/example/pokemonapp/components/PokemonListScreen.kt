@@ -20,14 +20,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.rememberAsyncImagePainter
-import com.example.pokemonapp.R
 import com.example.pokemonapp.models.PokemonViewModel
 import java.util.Locale
 
@@ -37,7 +35,7 @@ import java.util.Locale
 fun PokemonScreen(pokemonViewModel: PokemonViewModel = viewModel()) {
     val pokemon by pokemonViewModel.pokemon.collectAsState()
     Column {
-        Banner()
+//        Banner()
         InputField(pokemonViewModel)
         Box(
             contentAlignment = Alignment.Center
@@ -57,15 +55,6 @@ fun PokemonScreen(pokemonViewModel: PokemonViewModel = viewModel()) {
                         fontSize = 24.sp
                     )
                     Log.d("types", it.types.toString())
-//            Text(
-//                modifier = Modifier
-//                    .padding(top = 8.dp)
-//                    .fillMaxWidth(),
-//                text = it.types { type -> type.name },
-//                fontWeight = FontWeight.Bold,
-//                textAlign = TextAlign.Center,
-//                fontSize = 24.sp
-//            )
                     it.types?.let { typelist ->
                         Text(
                             modifier = Modifier
@@ -100,79 +89,7 @@ fun PokemonScreen(pokemonViewModel: PokemonViewModel = viewModel()) {
         }
     }
 }
-//    Scaffold(
-//        topBar = {
-//            TopAppBar(title = { Text("Pokemon") })
-//        }
-//    ){ innerPadding ->
-//        Column(
-//            modifier = Modifier.padding(innerPadding),
-//            verticalArrangement = Arrangement.spacedBy(8.dp)
-//        ) {
-//            InputField(pokemonViewModel)
-//            Content(pokemon)
-//        }
-//    }
-//}
-//@Composable
-//private fun Content(pokemon: Pokemon?) {
-//    if (pokemon == null) {
-//        CircularProgressIndicator()
-//    } else {
-//        Box(
-//            modifier = Modifier.fillMaxSize(),
-//            contentAlignment = Alignment.Center
-//        ) {
-//            Column(
-//                verticalArrangement = Arrangement.Center,
-//                horizontalAlignment = Alignment.CenterHorizontally
-//            ){
-//                val spriteUrl = pokemon.sprite?.imageURL
-//                if (spriteUrl != null) {
-//                    PokemonSprite(url = spriteUrl)
-//                } else {
-//                    Text("No image available")
-//                }
-//                Text(
-//                    modifier = Modifier
-//                        .padding(top = 8.dp)
-//                        .fillMaxWidth(),
-//                    text = pokemon.name,
-//                    fontWeight = FontWeight.Bold,
-//                    textAlign = TextAlign.Center,
-//                    fontSize = 24.sp
-//                )
-//                Text(
-//                    modifier = Modifier
-//                        .padding(top = 8.dp)
-//                        .fillMaxWidth(),
-//                    text = "Types: "+(pokemon.types.joinToString("-"){ it.toString() }.takeWhile { it.isDigit() }),
-//                    fontWeight = FontWeight.Bold,
-//                    textAlign = TextAlign.Center,
-//                    fontSize = 24.sp
-//                )
-//                Text(
-//                    modifier = Modifier
-//                        .padding(top = 8.dp)
-//                        .fillMaxWidth(),
-//                    text = "Height: "+pokemon.height.toString()+"ft",
-//                    fontWeight = FontWeight.Bold,
-//                    textAlign = TextAlign.Center,
-//                    fontSize = 24.sp
-//                )
-//                Text(
-//                    modifier = Modifier
-//                        .padding(top = 8.dp)
-//                        .fillMaxWidth(),
-//                    text = "Weight: "+pokemon.weight.toString()+"lbs",
-//                    fontWeight = FontWeight.Bold,
-//                    textAlign = TextAlign.Center,
-//                    fontSize = 24.sp
-//                )
-//            }
-//        }
-//    }
-//}
+
 @Composable
 fun InputField(pokemonViewModel: PokemonViewModel) {
 
@@ -198,14 +115,14 @@ fun InputField(pokemonViewModel: PokemonViewModel) {
         }) { Text("GO") } //.lowercase so I dont have to do only lower case characters to search
     }
 }
-@Composable
-fun Banner() {
-    Image(
-        painter = painterResource(id = R.drawable.banner), // Use the image file name without the extension
-        contentDescription = "Description of the image",
-        modifier = Modifier.size(100.dp) // Adjust size as needed
-    )
-}
+//@Composable
+//fun Banner() {
+////    Image(
+//////        painter = painterResource(id = R.drawable.banner), // Use the image file name without the extension
+////        contentDescription = "Description of the image",
+////        modifier = Modifier.size(100.dp) // Adjust size as needed
+////    )
+//}
 @Composable
 private fun PokemonSprite(url: String) {
     val painter = rememberAsyncImagePainter(url)
@@ -216,4 +133,4 @@ private fun PokemonSprite(url: String) {
     )
 }
 //TODO
-//Pokemon banner, search bar, go button
+//Pokemon banner
