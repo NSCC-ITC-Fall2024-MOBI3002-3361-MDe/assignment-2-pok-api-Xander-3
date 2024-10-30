@@ -14,8 +14,8 @@ class PokemonViewModel(
     private val repository: Api = PokemonRepository()
 
 ) : ViewModel() {
-    private val _pokemon = MutableStateFlow<Pokemon?>(null)
-    val pokemon: StateFlow<Pokemon?> get() = _pokemon.asStateFlow()
+    private val _pokemon = MutableStateFlow<PokemonModel?>(null)
+    val pokemon: StateFlow<PokemonModel?> get() = _pokemon.asStateFlow()
     init{
         fetchPokemon("bulbasaur") //Why not initialize to pokemon 1?
     }
@@ -30,10 +30,10 @@ class PokemonViewModel(
                     return@launch
                 }
                 if (data != null) {
-                    Log.d("Got data", "Got data")
+                    Log.d("Result", result.toString())
                     _pokemon.value = data
                 } else {
-                    Log.d("Got nothing", "Got data")
+                    Log.d("Got nothing", "Got nothing")
                 }
             } catch (e: Exception) {
                 Log.e("Fetch Pokemon Error", "Error fetching Pokemon", e)
